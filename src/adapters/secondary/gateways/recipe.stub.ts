@@ -1,11 +1,15 @@
+import { Recipe } from "../../../app/store";
 import { RecipeGateway } from "../../../features/recipes/gateways/recipeGateway";
-import { Recipe } from "../../../features/recipes/getRecipes/recipes.slice";
 
 export class RecipeGatewayStub implements RecipeGateway {
   private recipes: { recipes: Recipe[] } = { recipes: [] };
 
   async getRecipes() {
     return this.recipes;
+  }
+
+  async deleteRecipeById(id: string) {
+    this.recipes.recipes = this.recipes.recipes.filter((r) => r.id !== id);
   }
 
   async getRecipeById(id: string) {

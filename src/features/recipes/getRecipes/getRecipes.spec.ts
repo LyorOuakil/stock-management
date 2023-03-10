@@ -1,10 +1,10 @@
 import { RecipeGatewayStub } from "../../../adapters/secondary/gateways/recipe.stub";
-import { AppStore, initStore, RootState } from "../../../app/store";
-import { getRecipesAsync } from "./getRecipes.action";
+import { AppStore, initStore, AppState } from "../../../app/store";
+import { getRecipes } from "./recipes";
 
 describe("Get all recipes", () => {
   let store: AppStore;
-  let initialState: RootState;
+  let initialState: AppState;
   let recipeGateway: RecipeGatewayStub;
 
   beforeEach(() => {
@@ -32,7 +32,7 @@ describe("Get all recipes", () => {
       },
     ];
     recipeGateway.setRecipes = recipes;
-    await store.dispatch(getRecipesAsync());
+    await store.dispatch(getRecipes);
 
     expect(store.getState()).toEqual({
       ...initialState,
@@ -55,7 +55,7 @@ describe("Get all recipes", () => {
       },
     ];
     recipeGateway.setRecipes = recipes;
-    await store.dispatch(getRecipesAsync());
+    await store.dispatch(getRecipes);
 
     expect(store.getState()).toEqual({
       ...initialState,

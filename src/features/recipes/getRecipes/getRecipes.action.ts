@@ -1,11 +1,8 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Dependencies } from "../../../app/dependencies";
+import { createAction } from "@reduxjs/toolkit";
+import { RecipesState } from "./types";
 
-export const getRecipesAsync = createAsyncThunk(
-  "recipes/getRecipes",
-  async (_, { extra }) => {
-    const { recipeGateway } = extra as Dependencies; // Need to fix this type
-    const response = await recipeGateway.getRecipes();
-    return response.recipes;
-  }
-);
+export const getRecipesActionSuccess = createAction<{
+  recipes: RecipesState["recipes"];
+}>("GET_RECIPES_SUCCESS");
+
+export const getRecipesActionLoading = createAction("GET_RECIPES_LOADING");
