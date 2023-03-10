@@ -6,7 +6,9 @@ import {
   ThunkDispatch,
 } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/counterSlice";
-import recipeReducer from "../features/recipes/recipes.slice";
+import recipesReducer from "../features/recipes/getRecipes/recipes.slice";
+import recipeReducer from "../features/recipes/getRecipeById/recipe.slice";
+
 import { Dependencies } from "./dependencies";
 
 export const initStore = (dependencies: Partial<Dependencies>) => {
@@ -14,7 +16,8 @@ export const initStore = (dependencies: Partial<Dependencies>) => {
     devTools: true,
     reducer: {
       counter: counterReducer,
-      recipes: recipeReducer,
+      recipes: recipesReducer,
+      recipe: recipeReducer,
     },
     middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware({
