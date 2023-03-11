@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { AppState } from "../../../app/store";
+import { AppState } from "../../appState";
 import {
   deleteRecipeByIdSuccess,
   getRecipeActionFailed,

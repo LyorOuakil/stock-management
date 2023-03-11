@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { AppState } from "../../../app/store";
+import { AppState } from "../../appState";
 
 export const getRecipeActionSuccess = createAction<{
   recipe: AppState["recipe"];

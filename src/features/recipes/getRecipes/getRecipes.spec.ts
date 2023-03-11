@@ -1,5 +1,6 @@
 import { RecipeGatewayStub } from "../../../adapters/secondary/gateways/recipe.stub";
-import { AppStore, initStore, AppState } from "../../../app/store";
+import { AppStore, initStore } from "../../../app/store";
+import { AppState } from "../../appState";
 import { getRecipes } from "./recipes";
 
 describe("Get all recipes", () => {

@@ -6,6 +6,7 @@ import {
   ThunkDispatch,
   AnyAction,
 } from "@reduxjs/toolkit";
+import { AppState } from "../features/appState";
 import { recipesReducer } from "../features/recipes/getRecipes/recipes.reducer";
 import { recipeReducer } from "../features/recipes/recipeById/recipe.reducer";
 
@@ -27,22 +28,6 @@ export const initStore = (dependencies: Partial<Dependencies>) => {
     },
   });
 };
-
-export interface Recipe {
-  id: string;
-  name: string;
-}
-
-export interface AppState {
-  recipes: {
-    recipes: Recipe[];
-    status?: "loading" | "failed" | "success";
-  };
-  recipe: {
-    data: Recipe | null;
-    status?: "loading" | "failed" | "success";
-  };
-}
 
 export const store = initStore({});
 

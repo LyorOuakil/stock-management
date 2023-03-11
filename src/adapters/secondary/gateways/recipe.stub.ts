@@ -1,5 +1,5 @@
-import { Recipe } from "../../../app/store";
 import { RecipeGateway } from "../../../features/recipes/gateways/recipeGateway";
+import { Recipe } from "../../../features/recipes/getRecipes/types";
 
 export class RecipeGatewayStub implements RecipeGateway {
   private recipes: { recipes: Recipe[] } = { recipes: [] };
