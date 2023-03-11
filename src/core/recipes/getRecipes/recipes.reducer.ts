@@ -1,6 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { AppState } from "../../appState";
-import { getRecipesActionSuccess } from "./getRecipes.action";
+import {
+  getRecipesActionFailed,
+  getRecipesActionSuccess,
+} from "./getRecipes.action";
 
 export const recipesReducer = createReducer<AppState["recipes"]>(
   { recipes: [] },
@@ -10,6 +13,10 @@ export const recipesReducer = createReducer<AppState["recipes"]>(
         return { recipes: action.payload.recipes, status: "success" };
       }
       return state;
+    });
+
+    builder.addCase(getRecipesActionFailed, (state, action) => {
+      return { recipes: state.recipes, status: "failed" };
     });
   }
 );

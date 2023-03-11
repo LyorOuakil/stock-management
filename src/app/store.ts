@@ -6,11 +6,11 @@ import {
   ThunkDispatch,
   AnyAction,
 } from "@reduxjs/toolkit";
-import { AppState } from "../features/appState";
-import { recipesReducer } from "../features/recipes/getRecipes/recipes.reducer";
-import { recipeReducer } from "../features/recipes/recipeById/recipe.reducer";
+import { AppState } from "../core/appState";
+import { recipesReducer } from "../core/recipes/getRecipes/recipes.reducer";
+import { recipeReducer } from "../core/recipes/recipeById/recipe.reducer";
 
-import { Dependencies } from "./dependencies";
+import { Dependencies, getDependencies } from "./dependencies";
 
 export const initStore = (dependencies: Partial<Dependencies>) => {
   return configureStore({
@@ -29,9 +29,10 @@ export const initStore = (dependencies: Partial<Dependencies>) => {
   });
 };
 
-export const store = initStore({});
+const dependencies = getDependencies();
+export const store = initStore(dependencies);
 
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = ThunkDispatch<AppState, Dependencies, Action>;
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,

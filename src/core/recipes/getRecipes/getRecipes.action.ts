@@ -6,3 +6,5 @@ export const getRecipesActionSuccess = createAction<{
 }>("GET_RECIPES_SUCCESS");
 
 export const getRecipesActionLoading = createAction("GET_RECIPES_LOADING");
+
+export const getRecipesActionFailed = createAction("GET_RECIPES_FAILED");

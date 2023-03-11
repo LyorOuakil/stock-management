@@ -66,4 +66,18 @@ describe("Get all recipes", () => {
       },
     });
   });
+
+  it("Should get an error when data is not fetch", async () => {
+    recipeGateway.setErr = true;
+
+    await store.dispatch(getRecipes);
+
+    expect(store.getState()).toEqual({
+      ...initialState,
+      recipes: {
+        recipes: store.getState().recipes.recipes,
+        status: "failed",
+      },
+    });
+  });
 });

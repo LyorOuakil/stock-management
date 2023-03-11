@@ -1,10 +1,14 @@
-import { RecipeGateway } from "../../../features/recipes/gateways/recipeGateway";
-import { Recipe } from "../../../features/recipes/getRecipes/types";
+import { RecipeGateway } from "../../../core/recipes/gateways/recipeGateway";
+import { Recipe } from "../../../core/recipes/getRecipes/types";
 
 export class RecipeGatewayStub implements RecipeGateway {
   private recipes: { recipes: Recipe[] } = { recipes: [] };
+  private err: boolean = false;
 
   async getRecipes() {
+    if (this.err) {
+      throw new Error("Error fetching recipes");
+    }
     return this.recipes;
   }
 
@@ -22,6 +26,10 @@ export class RecipeGatewayStub implements RecipeGateway {
     } catch (err) {
       throw err;
     }
+  }
+
+  set setErr(err: boolean) {
+    this.err = err;
   }
 
   set setRecipes(recipes: Recipe[]) {
